@@ -32,7 +32,7 @@
                                        id="name" 
                                        name="name" 
                                        value="{{ old('name') }}"
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="Ingrese el nombre completo"
                                        required>
                                 @error('name')
@@ -49,7 +49,7 @@
                                        id="email" 
                                        name="email" 
                                        value="{{ old('email') }}"
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="usuario@ejemplo.com"
                                        required>
                                 @error('email')
@@ -68,7 +68,7 @@
                                        value="{{ old('rfc') }}"
                                        maxlength="13"
                                        placeholder="RFC (10-13 caracteres)"
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        required>
                                 @error('rfc')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
@@ -86,7 +86,7 @@
                                        value="{{ old('curp') }}"
                                        maxlength="20"
                                        placeholder="CURP (10-20 caracteres)"
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        required>
                                 @error('curp')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
@@ -98,7 +98,7 @@
                                 <label class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">
                                     Sexo
                                 </label>
-                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-0.5">
                                     <div class="flex-1">
                                         <input type="radio" 
                                                id="sex_masculino" 
@@ -107,8 +107,8 @@
                                                {{ old('sex') == 'masculino' ? 'checked' : '' }}
                                                class="sr-only peer">
                                         <label for="sex_masculino" 
-                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
-                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                               class="flex items-center justify-center w-full p-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-3 h-3 mr-1.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             Masculino
                                         </label>
                                     </div>
@@ -120,8 +120,8 @@
                                                {{ old('sex') == 'femenino' ? 'checked' : '' }}
                                                class="sr-only peer">
                                         <label for="sex_femenino" 
-                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
-                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                               class="flex items-center justify-center w-full p-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-3 h-3 mr-1.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             Femenino
                                         </label>
                                     </div>
@@ -136,7 +136,7 @@
                                 <label class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">
                                     Tema
                                 </label>
-                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-0.5">
                                     <div class="flex-1">
                                         <input type="radio" 
                                                id="theme_dark" 
@@ -145,8 +145,8 @@
                                                {{ old('theme') == 'dark' ? 'checked' : '' }}
                                                class="sr-only peer">
                                         <label for="theme_dark" 
-                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
-                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                               class="flex items-center justify-center w-full p-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-3 h-3 mr-1.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             Oscuro
                                         </label>
                                     </div>
@@ -158,8 +158,8 @@
                                                {{ old('theme') == 'light' ? 'checked' : '' }}
                                                class="sr-only peer">
                                         <label for="theme_light" 
-                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
-                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                               class="flex items-center justify-center w-full p-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-3 h-3 mr-1.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             Claro
                                         </label>
                                     </div>
@@ -174,7 +174,7 @@
                                 <label class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">
                                     Estado
                                 </label>
-                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-0.5">
                                     <div class="flex-1">
                                         <input type="radio" 
                                                id="status_inactive" 
@@ -183,8 +183,8 @@
                                                {{ old('status') == '0' ? 'checked' : '' }}
                                                class="sr-only peer">
                                         <label for="status_inactive" 
-                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-red-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-red-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
-                                            <input type="radio" class="w-4 h-4 mr-2 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                               class="flex items-center justify-center w-full p-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-red-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-red-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-3 h-3 mr-1.5 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             Inactivo
                                         </label>
                                     </div>
@@ -196,8 +196,8 @@
                                                {{ old('status') == '1' ? 'checked' : '' }}
                                                class="sr-only peer">
                                         <label for="status_active" 
-                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-green-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-green-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
-                                            <input type="radio" class="w-4 h-4 mr-2 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                               class="flex items-center justify-center w-full p-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-green-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-green-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-3 h-3 mr-1.5 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             Activo
                                         </label>
                                     </div>
@@ -215,7 +215,7 @@
                                 <input type="password" 
                                        id="password" 
                                        name="password" 
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="Mínimo 8 caracteres"
                                        required>
                                 @error('password')
@@ -231,7 +231,7 @@
                                 <input type="password" 
                                        id="password_confirmation" 
                                        name="password_confirmation" 
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="Confirme la contraseña"
                                        required>
                             </div>
