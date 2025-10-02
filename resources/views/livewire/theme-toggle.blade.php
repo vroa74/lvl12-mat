@@ -1,7 +1,6 @@
 <div class="relative">
     <button 
         wire:click="toggleTheme" 
-        onclick="toggleThemeManually()"
         class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         title="{{ $theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro' }}"
     >
@@ -20,24 +19,6 @@
 </div>
 
 <script>
-// Función para cambiar tema manualmente
-function toggleThemeManually() {
-    const html = document.documentElement;
-    const isDark = html.classList.contains('dark');
-    
-    console.log('Estado actual del tema:', isDark ? 'dark' : 'light');
-    
-    if (isDark) {
-        html.classList.remove('dark');
-        console.log('Cambiando a tema claro');
-    } else {
-        html.classList.add('dark');
-        console.log('Cambiando a tema oscuro');
-    }
-    
-    console.log('Clases actuales del HTML:', html.className);
-}
-
 // Escuchar eventos de Livewire
 document.addEventListener('livewire:init', function () {
     Livewire.on('themeChanged', function (theme) {
@@ -54,6 +35,17 @@ document.addEventListener('livewire:init', function () {
         }
         
         console.log('Clases finales del HTML:', html.className);
+        
+        // Forzar persistencia del tema
+        setTimeout(() => {
+            if (theme === 'dark' && !html.classList.contains('dark')) {
+                html.classList.add('dark');
+                console.log('Forzando tema oscuro');
+            } else if (theme === 'light' && html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                console.log('Forzando tema claro');
+            }
+        }, 100);
     });
 });
 </script>

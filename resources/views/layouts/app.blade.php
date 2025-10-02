@@ -23,13 +23,21 @@
                     const userTheme = '{{ Auth::user()->theme ?? "light" }}';
                     console.log('Tema inicial del usuario:', userTheme);
                     
+                    const html = document.documentElement;
+                    
                     if (userTheme === 'dark') {
-                        document.documentElement.classList.add('dark');
+                        html.classList.add('dark');
                         console.log('Aplicando tema oscuro inicial');
                     } else {
-                        document.documentElement.classList.remove('dark');
+                        html.classList.remove('dark');
                         console.log('Aplicando tema claro inicial');
                     }
+                    
+                    // Verificar que se aplicó correctamente
+                    setTimeout(() => {
+                        console.log('Clases finales del HTML:', html.className);
+                        console.log('¿Tema oscuro activo?', html.classList.contains('dark'));
+                    }, 200);
                 @endif
             });
         </script>
