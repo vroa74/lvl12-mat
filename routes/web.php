@@ -14,4 +14,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+    // Rutas del CRUD de usuarios
+    Route::resource('users', App\Http\Controllers\UserController::class);
 });
