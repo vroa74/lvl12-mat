@@ -134,36 +134,77 @@
 
                             <!-- Tema -->
                             <div>
-                                <label for="theme" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <label class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">
                                     Tema
                                 </label>
-                                <select id="theme" 
-                                        name="theme" 
-                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-300"
-                                        required>
-                                    <option value="">Seleccione un tema</option>
-                                    <option value="dark" {{ old('theme', $user->theme) == 'dark' ? 'selected' : '' }}>Oscuro</option>
-                                    <option value="light" {{ old('theme', $user->theme) == 'light' ? 'selected' : '' }}>Claro</option>
-                                </select>
+                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                                    <div class="flex-1">
+                                        <input type="radio" 
+                                               id="theme_dark" 
+                                               name="theme" 
+                                               value="dark" 
+                                               {{ old('theme', $user->theme) == 'dark' ? 'checked' : '' }}
+                                               class="sr-only peer">
+                                        <label for="theme_dark" 
+                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            Oscuro
+                                        </label>
+                                    </div>
+                                    <div class="flex-1">
+                                        <input type="radio" 
+                                               id="theme_light" 
+                                               name="theme" 
+                                               value="light" 
+                                               {{ old('theme', $user->theme) == 'light' ? 'checked' : '' }}
+                                               class="sr-only peer">
+                                        <label for="theme_light" 
+                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            Claro
+                                        </label>
+                                    </div>
+                                </div>
                                 @error('theme')
-                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <!-- Estado -->
                             <div>
-                                <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <label class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">
                                     Estado
                                 </label>
-                                <select id="status" 
-                                        name="status" 
-                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-300"
-                                        required>
-                                    <option value="1" {{ old('status', $user->status) == '1' ? 'selected' : '' }}>Activo</option>
-                                    <option value="0" {{ old('status', $user->status) == '0' ? 'selected' : '' }}>Inactivo</option>
-                                </select>
+                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                                    <div class="flex-1">
+                                        <input type="radio" 
+                                               id="status_inactive" 
+                                               name="status" 
+                                               value="0" 
+                                               {{ old('status', $user->status) == '0' ? 'checked' : '' }}
+                                               class="sr-only peer">
+                                        <label for="status_inactive" 
+                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-red-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-red-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-4 h-4 mr-2 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            Inactivo
+                                        </label>
+                                    </div>
+                                    <div class="flex-1">
+                                        <input type="radio" 
+                                               id="status_active" 
+                                               name="status" 
+                                               value="1" 
+                                               {{ old('status', $user->status) == '1' ? 'checked' : '' }}
+                                               class="sr-only peer">
+                                        <label for="status_active" 
+                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-green-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-green-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-4 h-4 mr-2 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            Activo
+                                        </label>
+                                    </div>
+                                </div>
                                 @error('status')
-                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
 
