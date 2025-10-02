@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
-      @if(Auth::check() && Auth::user()->theme === 'dark') class="dark" @endif>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,27 +16,54 @@
         
         <!-- Theme Script -->
         <script>
+            // Función global para cambiar tema (se define aquí primero)
+            window.changeTheme = function(theme) {
+                console.log('Cambiando tema a:', theme);
+                const html = document.documentElement;
+                
+                // Forzar remoción de clase dark
+                html.classList.remove('dark');
+                
+                // Aplicar nuevo tema
+                if (theme === 'dark') {
+                    html.classList.add('dark');
+                    console.log('Tema oscuro aplicado');
+                } else {
+                    console.log('Tema claro aplicado');
+                }
+                
+                // Verificación múltiple para asegurar que se aplique
+                setTimeout(() => {
+                    if (theme === 'dark' && !html.classList.contains('dark')) {
+                        html.classList.add('dark');
+                        console.log('Forzando tema oscuro - verificación 1');
+                    }
+                }, 10);
+                
+                setTimeout(() => {
+                    if (theme === 'dark' && !html.classList.contains('dark')) {
+                        html.classList.add('dark');
+                        console.log('Forzando tema oscuro - verificación 2');
+                    }
+                }, 100);
+                
+                setTimeout(() => {
+                    console.log('Estado final:', {
+                        theme: theme,
+                        hasDark: html.classList.contains('dark'),
+                        classes: html.className
+                    });
+                }, 200);
+            };
+
             document.addEventListener('DOMContentLoaded', function() {
                 // Aplicar tema inicial desde la base de datos
                 @if(Auth::check())
                     const userTheme = '{{ Auth::user()->theme ?? "light" }}';
                     console.log('Tema inicial del usuario:', userTheme);
                     
-                    const html = document.documentElement;
-                    
-                    if (userTheme === 'dark') {
-                        html.classList.add('dark');
-                        console.log('Aplicando tema oscuro inicial');
-                    } else {
-                        html.classList.remove('dark');
-                        console.log('Aplicando tema claro inicial');
-                    }
-                    
-                    // Verificar que se aplicó correctamente
-                    setTimeout(() => {
-                        console.log('Clases finales del HTML:', html.className);
-                        console.log('¿Tema oscuro activo?', html.classList.contains('dark'));
-                    }, 200);
+                    // Usar la función global
+                    window.changeTheme(userTheme);
                 @endif
             });
         </script>

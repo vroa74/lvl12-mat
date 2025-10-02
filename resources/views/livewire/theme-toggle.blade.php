@@ -1,8 +1,10 @@
 <div class="relative">
     <button 
         wire:click="toggleTheme" 
+        onclick="handleThemeToggle(this)"
         class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         title="{{ $theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro' }}"
+        data-current-theme="{{ $theme }}"
     >
         @if($theme === 'light')
             <!-- Icono de sol para modo claro -->
@@ -19,33 +21,39 @@
 </div>
 
 <script>
+// Función para manejar el toggle directamente
+function handleThemeToggle(button) {
+    const currentTheme = button.getAttribute('data-current-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    console.log('Toggle directo - Cambiando de', currentTheme, 'a', newTheme);
+    
+    // Aplicar cambio inmediatamente
+    if (window.changeTheme) {
+        window.changeTheme(newTheme);
+    }
+    
+    // Actualizar el atributo del botón
+    button.setAttribute('data-current-theme', newTheme);
+}
+
 // Escuchar eventos de Livewire
 document.addEventListener('livewire:init', function () {
     Livewire.on('themeChanged', function (theme) {
-        console.log('Evento Livewire recibido - Nuevo tema:', theme);
-        
-        const html = document.documentElement;
-        
-        if (theme === 'dark') {
-            html.classList.add('dark');
-            console.log('Aplicando tema oscuro desde Livewire');
-        } else {
-            html.classList.remove('dark');
-            console.log('Aplicando tema claro desde Livewire');
+        console.log('Evento Livewire recibido:', theme);
+        if (window.changeTheme) {
+            window.changeTheme(theme);
         }
-        
-        console.log('Clases finales del HTML:', html.className);
-        
-        // Forzar persistencia del tema
-        setTimeout(() => {
-            if (theme === 'dark' && !html.classList.contains('dark')) {
-                html.classList.add('dark');
-                console.log('Forzando tema oscuro');
-            } else if (theme === 'light' && html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                console.log('Forzando tema claro');
-            }
-        }, 100);
+    });
+});
+
+// También escuchar eventos de Livewire v3
+document.addEventListener('livewire:load', function () {
+    Livewire.on('themeChanged', function (theme) {
+        console.log('Evento Livewire v3 recibido:', theme);
+        if (window.changeTheme) {
+            window.changeTheme(theme);
+        }
     });
 });
 </script>

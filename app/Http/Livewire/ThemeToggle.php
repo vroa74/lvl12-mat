@@ -23,11 +23,19 @@ class ThemeToggle extends Component
         
         // Guardar en DB
         $user = Auth::user();
-        $user->theme = $this->theme;
-        $user->save();
+        if ($user) {
+            $user->theme = $this->theme;
+            $user->save();
+        }
 
-        // Forzar actualización
+        // Forzar actualización de la vista
         $this->dispatch('themeChanged', $this->theme);
+        
+        // También ejecutar JavaScript directamente
+        $this->js("window.changeTheme && window.changeTheme('{$this->theme}')");
+        
+        // Forzar re-renderizado del componente
+        $this->render();
     }
 
     public function render()
