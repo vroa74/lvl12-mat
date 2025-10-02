@@ -96,19 +96,39 @@
 
                             <!-- Sexo -->
                             <div>
-                                <label for="sex" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <label class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">
                                     Sexo
                                 </label>
-                                <select id="sex" 
-                                        name="sex" 
-                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-300"
-                                        required>
-                                    <option value="">Seleccione una opción</option>
-                                    <option value="masculino" {{ old('sex', $user->sex) == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                    <option value="femenino" {{ old('sex', $user->sex) == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                                </select>
+                                <div class="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                                    <div class="flex-1">
+                                        <input type="radio" 
+                                               id="sex_masculino" 
+                                               name="sex" 
+                                               value="masculino" 
+                                               {{ old('sex', $user->sex) == 'masculino' ? 'checked' : '' }}
+                                               class="sr-only peer">
+                                        <label for="sex_masculino" 
+                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            Masculino
+                                        </label>
+                                    </div>
+                                    <div class="flex-1">
+                                        <input type="radio" 
+                                               id="sex_femenino" 
+                                               name="sex" 
+                                               value="femenino" 
+                                               {{ old('sex', $user->sex) == 'femenino' ? 'checked' : '' }}
+                                               class="sr-only peer">
+                                        <label for="sex_femenino" 
+                                               class="flex items-center justify-center w-full p-2 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-md cursor-pointer peer-checked:text-blue-600 peer-checked:bg-white dark:peer-checked:bg-gray-600 dark:peer-checked:text-blue-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200">
+                                            <input type="radio" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            Femenino
+                                        </label>
+                                    </div>
+                                </div>
                                 @error('sex')
-                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -147,6 +167,31 @@
                                 @enderror
                             </div>
 
+                        </div>
+
+                        <!-- Nota sobre contraseña -->
+                        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="ri-information-line text-blue-400 text-lg"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-sm font-medium text-blue-800 dark:text-blue-200">
+                                        Información sobre la contraseña
+                                    </h3>
+                                    <div class="mt-2 text-sm text-blue-700 dark:text-blue-300">
+                                        <p>
+                                            <strong>Observación:</strong> Si ambos campos de contraseña están vacíos, 
+                                            la contraseña actual del usuario no será modificada. Solo complete estos 
+                                            campos si desea cambiar la contraseña del usuario.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos de contraseña en la misma fila -->
+                        <div class="grid grid-cols-2 gap-6">
                             <!-- Contraseña -->
                             <div>
                                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -172,27 +217,6 @@
                                        name="password_confirmation" 
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="Confirme la nueva contraseña">
-                            </div>
-                        </div>
-
-                        <!-- Nota sobre contraseña -->
-                        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="ri-information-line text-blue-400 text-lg"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <h3 class="text-sm font-medium text-blue-800 dark:text-blue-200">
-                                        Información sobre la contraseña
-                                    </h3>
-                                    <div class="mt-2 text-sm text-blue-700 dark:text-blue-300">
-                                        <p>
-                                            <strong>Observación:</strong> Si ambos campos de contraseña están vacíos, 
-                                            la contraseña actual del usuario no será modificada. Solo complete estos 
-                                            campos si desea cambiar la contraseña del usuario.
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
