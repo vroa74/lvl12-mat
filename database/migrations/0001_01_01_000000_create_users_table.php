@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('sex', ['masculino', 'femenino']);// no puede ser nulo y debe se masculino o femenino
             $table->integer('nivel')->default(7);// no puede ser nulo
             $table->enum('theme', ['dark', 'light'])->default('dark');// no puede ser nulo y debe se masculino o femenino
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
 
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

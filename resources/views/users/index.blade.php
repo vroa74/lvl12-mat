@@ -72,10 +72,25 @@
                                             {{ ucfirst($user->sex) }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                {{ $user->status ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300' }}">
-                                                {{ $user->status ? 'Activo' : 'Inactivo' }}
-                                            </span>
+                                            <form action="{{ route('users.update', $user) }}" method="POST" class="inline">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="name" value="{{ $user->name }}">
+                                                <input type="hidden" name="email" value="{{ $user->email }}">
+                                                <input type="hidden" name="rfc" value="{{ $user->rfc }}">
+                                                <input type="hidden" name="curp" value="{{ $user->curp }}">
+                                                <input type="hidden" name="sex" value="{{ $user->sex }}">
+                                                <input type="hidden" name="theme" value="{{ $user->theme }}">
+                                                <input type="hidden" name="status" value="{{ $user->status ? 0 : 1 }}">
+                                                
+                                                <button type="submit" 
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full cursor-pointer transition-colors duration-200 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                                                            {{ $user->status ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-800' }}"
+                                                        title="{{ $user->status ? 'Hacer clic para desactivar' : 'Hacer clic para activar' }}"
+                                                        onclick="return confirm('¿{{ $user->status ? 'Desactivar' : 'Activar' }} este usuario?')">
+                                                    {{ $user->status ? 'Activo' : 'Inactivo' }}
+                                                </button>
+                                            </form>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <div class="flex space-x-2">
