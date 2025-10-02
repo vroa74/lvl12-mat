@@ -12,7 +12,7 @@
                     <!-- Botón para volver -->
                     <div class="mb-6">
                         <a href="{{ route('users.index') }}" 
-                           class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                           class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 inline-flex items-center">
                             <i class="ri-arrow-left-line mr-2"></i>
                             Volver
                         </a>
@@ -106,7 +106,7 @@
                     <!-- Botones de acción -->
                     <div class="mt-6 flex justify-end space-x-3">
                         <a href="{{ route('users.edit', $user) }}" 
-                           class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                           class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-indigo-800 inline-flex items-center">
                             <i class="ri-edit-line mr-2"></i>
                             Editar Usuario
                         </a>
