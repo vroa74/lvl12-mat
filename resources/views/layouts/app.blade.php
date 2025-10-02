@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
+      @if(Auth::check() && Auth::user()->theme === 'dark') class="dark" @endif>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +14,25 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <!-- Theme Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Aplicar tema inicial desde la base de datos
+                @if(Auth::check())
+                    const userTheme = '{{ Auth::user()->theme ?? "light" }}';
+                    console.log('Tema inicial del usuario:', userTheme);
+                    
+                    if (userTheme === 'dark') {
+                        document.documentElement.classList.add('dark');
+                        console.log('Aplicando tema oscuro inicial');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        console.log('Aplicando tema claro inicial');
+                    }
+                @endif
+            });
+        </script>
 
         <!-- Styles -->
         @livewireStyles
@@ -20,12 +40,12 @@
     <body class="font-sans antialiased">
         <x-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
